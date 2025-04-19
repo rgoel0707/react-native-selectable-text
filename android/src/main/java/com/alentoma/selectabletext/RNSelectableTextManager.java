@@ -58,7 +58,7 @@ public class RNSelectableTextManager extends ReactTextViewManager {
                 // and would override the generated menu items
                 menu.clear();
                 for (int i = 0; i < menuItems.length; i++) {
-                  menu.add(0, i, 0, menuItems[i]);
+                    menu.add(0, i, 0, menuItems[i]);
                 }
                 return true;
             }
