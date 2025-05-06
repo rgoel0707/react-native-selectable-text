@@ -1,19 +1,18 @@
+
 buildscript {
     repositories {
-        google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.0'
+       classpath 'com.android.tools.build:gradle:7.0.4'
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    namespace 'com.rob117.selectabletext'
-    compileSdkVersion 34
+    compileSdkVersion 35
 
     defaultConfig {
         minSdkVersion 21
@@ -24,18 +23,13 @@ android {
     lintOptions {
         abortOnError false
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
 }
 
 repositories {
-    google()
     mavenCentral()
 }
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
 }
-
+  
