@@ -2,7 +2,7 @@
     "name": "@rgoel0707/react-native-selectable-text",
     "version": "1.10.1",
     "description": "React Native component for selectable text with menu options",
-    "main": "index.js",
+    "main": "index.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
