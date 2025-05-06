@@ -1,21 +1,42 @@
 {
-    "name": "@rob117/react-native-selectable-text",
-    "version": "1.10.0",
-    "description": "React Native component used to provide the features of pass different context menu items and events",
+    "name": "@rgoel0707/react-native-selectable-text",
+    "version": "1.10.1",
+    "description": "React Native component for selectable text with menu options",
     "main": "index.ts",
-    "homepage": "https://github.com/rob117/react-native-selectable-text",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
-        "react-native"
+        "react-native",
+        "react-component",
+        "react-native-component",
+        "react",
+        "react native",
+        "mobile",
+        "ios",
+        "android",
+        "selectable",
+        "text",
+        "selectable-text"
     ],
-    "author": "Rob Sherling <rob.sherling@gmail.com>",
+    "author": "Rishabh Goel",
     "license": "MIT",
+    "peerDependencies": {
+        "react": "*",
+        "react-native": "*"
+    },
     "devDependencies": {
         "react-native": "*"
     },
     "dependencies": {
         "fast-memoize": "*"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rgoel0707/react-native-selectable-text.git"
+    },
+    "bugs": {
+        "url": "https://github.com/rgoel0707/react-native-selectable-text/issues"
+    },
+    "homepage": "https://github.com/rgoel0707/react-native-selectable-text#readme"
 }
