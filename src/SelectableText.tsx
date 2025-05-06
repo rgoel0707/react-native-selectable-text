@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react'
-import { Text, requireNativeComponent, Platform, TextStyle, StyleProp, TextProps, TextInputProps, ColorValue, GestureResponderEvent, ViewProps } from 'react-native'
+import { Text, requireNativeComponent, Platform, TextStyle, StyleProp, TextProps, TextInputProps, GestureResponderEvent, ViewProps } from 'react-native'
 import memoize from 'fast-memoize'
+
+type ColorValue = string;
 
 interface RNSelectableTextProps extends ViewProps {
   onHighlightPress?: ((id: string) => void) | ((event: HighlightPressEvent) => void);
@@ -11,7 +13,7 @@ interface RNSelectableTextProps extends ViewProps {
   highlightColor?: ColorValue;
 }
 
-const RNSelectableText = requireNativeComponent<RNSelectableTextProps>('RNSelectableText')
+const RNSelectableText = requireNativeComponent('RNSelectableText')
 
 export interface IHighlights {
   start: number,
@@ -124,7 +126,7 @@ export const SelectableText = ({ onSelection, onHighlightPress, textValueProp, v
         const mergedHighlights = combineHighlights(props.highlights)
 
         const hightlightInRange = mergedHighlights.find(
-          ({ start, end }) => event.nativeEvent.clickedRangeStart >= start - 1 && event.nativeEvent.clickedRangeEnd <= end + 1,
+          (highlight: IHighlights) => event.nativeEvent.clickedRangeStart >= highlight.start - 1 && event.nativeEvent.clickedRangeEnd <= highlight.end + 1,
         )
 
         if (hightlightInRange) {
@@ -140,7 +142,7 @@ export const SelectableText = ({ onSelection, onHighlightPress, textValueProp, v
       props.highlights && props.highlights.length > 0
         ? mapHighlightsRanges(value, props.highlights).map(({ id, isHighlight, text, color }) => (
           <Text key={(new Date()).getTime()} {...textComponentProps} selectable={true} style={isHighlight ? { backgroundColor: color ?? props.highlightColor } : {}} onPress={(event: GestureResponderEvent) => {
-            if (textComponentProps && textComponentProps.onPress)
+            if (textComponentProps && 'onPress' in textComponentProps && textComponentProps.onPress)
               textComponentProps.onPress(event);
             if (isHighlight) {
               onHighlightPress && onHighlightPress(id ?? "")

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target": "es2015",
         "module": "commonjs",
         "declaration": true,
         "outDir": "./lib",
@@ -8,7 +8,9 @@
         "jsx": "react-native",
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["es2015", "dom"],
+        "moduleResolution": "node"
     },
     "include": [
         "src"

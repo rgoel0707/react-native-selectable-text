@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { TextStyle, StyleProp, TextProps, TextInputProps, ColorValue } from 'react-native';
+import { TextStyle, StyleProp, TextProps, TextInputProps } from 'react-native';
+type ColorValue = string;
 export interface IHighlights {
     start: number;
     end: number;
@@ -32,3 +33,4 @@ export interface SelectableTextProps {
     textComponentProps?: TextProps | TextInputProps;
 }
 export declare const SelectableText: ({ onSelection, onHighlightPress, textValueProp, value, TextComponent, textComponentProps, prependToChild, ...props }: SelectableTextProps) => React.JSX.Element;
+export {};
