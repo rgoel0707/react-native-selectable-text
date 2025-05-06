@@ -51,7 +51,7 @@ export interface SelectableTextProps {
   style?: StyleProp<TextStyle>;
   onHighlightPress?: (id: string) => void;
   appendToChildren?: ReactNode;
-  TextComponent?: ReactNode;
+  TextComponent?: React.ComponentType<any>;
   textValueProp?: string;
   textComponentProps?: TextProps | TextInputProps;
 }
@@ -112,7 +112,7 @@ const mapHighlightsRanges = (value: string, highlights: IHighlights[]) => {
 }
 
 export const SelectableText = ({ onSelection, onHighlightPress, textValueProp, value, TextComponent, textComponentProps, prependToChild, ...props }: SelectableTextProps) => {
-  const TX = (TextComponent = TextComponent || Text) as Function;
+  const TX = TextComponent || Text;
   textValueProp = textValueProp || 'children';
   const onSelectionNative = (event: any) => {
     var nativeEvent = event.nativeEvent as NativeEvent
@@ -137,18 +137,25 @@ export const SelectableText = ({ onSelection, onHighlightPress, textValueProp, v
     : () => { }
 
   let textValue = value as any;
-  if (TextComponent == Text) {
+  if (TX === Text) {
     textValue = (
       props.highlights && props.highlights.length > 0
         ? mapHighlightsRanges(value, props.highlights).map(({ id, isHighlight, text, color }) => (
-          <Text key={(new Date()).getTime()} {...textComponentProps} selectable={true} style={isHighlight ? { backgroundColor: color ?? props.highlightColor } : {}} onPress={(event: GestureResponderEvent) => {
-            if (textComponentProps && 'onPress' in textComponentProps && textComponentProps.onPress)
-              textComponentProps.onPress(event);
-            if (isHighlight) {
-              onHighlightPress && onHighlightPress(id ?? "")
-            }
-          }}>
-            {text} </Text>
+          <Text
+            key={(new Date()).getTime()}
+            {...textComponentProps}
+            selectable={true}
+            style={isHighlight ? { backgroundColor: color ?? props.highlightColor } : {}}
+            onPress={(event: GestureResponderEvent) => {
+              if (textComponentProps && 'onPress' in textComponentProps && textComponentProps.onPress)
+                textComponentProps.onPress(event);
+              if (isHighlight) {
+                onHighlightPress && onHighlightPress(id ?? "")
+              }
+            }}
+          >
+            {text}
+          </Text>
         ))
         : [value]
     );

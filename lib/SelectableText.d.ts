@@ -28,7 +28,7 @@ export interface SelectableTextProps {
     style?: StyleProp<TextStyle>;
     onHighlightPress?: (id: string) => void;
     appendToChildren?: ReactNode;
-    TextComponent?: ReactNode;
+    TextComponent?: React.ComponentType<any>;
     textValueProp?: string;
     textComponentProps?: TextProps | TextInputProps;
 }
